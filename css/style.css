@@ -1,0 +1,298 @@
+/* css/style.css - Diperbaiki dan Dioptimalkan */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #004d40;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #1e88e5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* --- Navigasi (index.html) --- */
+.menu-nav {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+.nav-button {
+    text-decoration: none;
+    background-color: #00796b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+.nav-button:hover {
+    background-color: #004d40;
+}
+
+/* ------------------------------------------- */
+/* --- Filter & Form Controls (stok.html) --- */
+/* ------------------------------------------- */
+.filter-controls, .add-data-form, .add-do-form {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.filter-controls h3, .add-data-form h3 {
+    margin-top: 0;
+    color: #004d40;
+}
+
+.filter-group label {
+    font-weight: normal;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+.filter-col {
+    flex: 1;
+}
+.filter-col label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.filter-controls select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.reset-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Form Tambah Data (Stok) */
+.add-data-form .form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.add-data-form input, .add-data-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.submit-button {
+    background-color: #00796b;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #f44336;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* ------------------------------------------- */
+/* --- Tabel Styling (stok.html) --- */
+/* ------------------------------------------- */
+.table-responsive {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    vertical-align: middle; /* Tengah vertikal */
+}
+th {
+    background-color: #e0f2f1;
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.qty-input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+}
+.action-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.summary-text {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Status Coloring */
+.status-aman { color: #4caf50; font-weight: bold; } /* Hijau */
+.status-menipis { color: #ff9800; font-weight: bold; } /* Orange */
+.status-kosong { color: #f44336; font-weight: bold; } /* Merah */
+
+
+/* ------------------------------------------- */
+/* --- Tracking Styles (tracking.html) --- */
+/* ------------------------------------------- */
+.add-do-form .form-row-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px 15px;
+    margin-bottom: 20px;
+}
+.add-do-form label {
+    font-weight: bold;
+    font-size: 14px;
+    align-self: center; /* Memastikan label di tengah vertikal */
+}
+.add-do-form input, .add-do-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input-readonly {
+    background-color: #eee;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.package-details {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    font-size: 14px;
+}
+
+.tracking-search {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.tracking-search input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.tracking-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #2196f3;
+    border-radius: 5px;
+}
+.tracking-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.tracking-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #2196f3;
+}
+.tracking-header p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+.status-tracking {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 15px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 4px;
+    height: 100%;
+    width: 2px;
+    background-color: #ddd;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.dot {
+    position: absolute;
+    left: -19px;
+    width: 10px;
+    height: 10px;
+    background-color: #00796b;
+    border-radius: 50%;
+    top: 5px;
+    z-index: 2; /* Agar dot di atas garis */
+}
+.details {
+    margin-left: 10px;
+}
+.details .keterangan {
+    font-weight: bold;
+    margin: 0;
+}
+.details .datetime {
+    font-size: 12px;
+    color: #777;
+    display: block;
+    margin-top: 2px;
+}

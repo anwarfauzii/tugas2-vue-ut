@@ -1,8 +1,8 @@
 # 📚 TUGAS PRAKTIK 2: APLIKASI PEMESANAN BAHAN AJAR SITTA (Vue.js)
 
-Proyek ini dikembangkan menggunakan **Vue.js versi 2 (Standalone)** untuk memenuhi Tugas Praktik 2 mata kuliah Pemrograman Berbasis Web. Aplikasi ini mensimulasikan sebagian alur kerja pemesanan dan distribusi bahan ajar SITTA di Universitas Terbuka, dengan fokus pada implementasi konsep dasar Vue.js[cite: 3, 4, 12, 13].
+Proyek ini dikembangkan menggunakan **Vue.js versi 2 (Standalone)** untuk memenuhi Tugas Praktik 2 mata kuliah Pemrograman Berbasis Web. Aplikasi ini mensimulasikan sebagian alur kerja pemesanan dan distribusi bahan ajar SITTA di Universitas Terbuka, dengan fokus pada implementasi konsep dasar Vue.js
 
-Seluruh data yang digunakan (stok, paket, tracking) diambil dari *dummy data* (`js/dataBahanAjar.js`) sesuai instruksi[cite: 13, 83].
+Seluruh data yang digunakan (stok, paket, tracking) diambil dari *dummy data* (`js/dataBahanAjar.js`) sesuai instruksi
 
 ---
 
@@ -10,49 +10,49 @@ Seluruh data yang digunakan (stok, paket, tracking) diambil dari *dummy data* (`
 
 Proyek ini telah menerapkan indikator capaian utama, termasuk:
 
-1.  **Sistem Perorganisasian Kode:** Menggunakan struktur proyek Vue.js yang disepakati (HTML terpisah, JS terpisah)[cite: 68, 69, 70, 72, 74, 80, 82].
-2.  **Display Data (Mustaches/v-text/v-html):** Digunakan untuk menampilkan semua data tabel, detail paket, dan catatan (`catatanHTML`)[cite: 7, 87, 32].
-3.  **Conditional Rendering (v-if/v-show):** Digunakan untuk menampilkan **Status Stok** (Aman/Menipis/Kosong) [cite: 88, 43], serta untuk mengimplementasikan *dependent options* pada filter stok (filter Kategori hanya muncul setelah filter UPBJJ dipilih)[cite: 88, 41, 42].
+1.  **Sistem Perorganisasian Kode:** Menggunakan struktur proyek Vue.js yang disepakati (HTML terpisah, JS terpisah).
+2.  **Display Data (Mustaches/v-text/v-html):** Digunakan untuk menampilkan semua data tabel, detail paket, dan catatan (`catatanHTML`).
+3.  **Conditional Rendering (v-if/v-show):** Digunakan untuk menampilkan **Status Stok** (Aman/Menipis/Kosong), serta untuk mengimplementasikan *dependent options* pada filter stok (filter Kategori hanya muncul setelah filter UPBJJ dipilih).
 4.  **Data Binding (v-bind/v-model):**
-    * **`v-model` (Two-way):** Digunakan pada semua formulir input (Tambah Stok, Tambah DO) dan pada fitur **Edit Stok** langsung di tabel[cite: 9, 33, 87].
-    * **Computed Properties:** Digunakan untuk mengimplementasikan **Filter dan Sort** pada Halaman Stok, serta untuk penomoran **DO Otomatis** dan kalkulasi **Total Harga**[cite: 9, 89].
-5.  **Watcher:** Minimal 2 *watcher* diimplementasikan untuk memantau perubahan data dan memicu logika non-komputasi[cite: 10, 90].
+    * **`v-model` (Two-way):** Digunakan pada semua formulir input (Tambah Stok, Tambah DO) dan pada fitur **Edit Stok** langsung di tabel.
+    * **Computed Properties:** Digunakan untuk mengimplementasikan **Filter dan Sort** pada Halaman Stok, serta untuk penomoran **DO Otomatis** dan kalkulasi **Total Harga**.
+5.  **Watcher:** Minimal 2 *watcher* diimplementasikan untuk memantau perubahan data dan memicu logika non-komputasi.
 
 ---
 
 ## 💻 Fitur Utama Aplikasi
 
-### 1. Halaman Stok Bahan Ajar (`stok.html`) [cite: 15]
+### 1. Halaman Stok Bahan Ajar (`stok.html`) 
 
 Halaman ini menampilkan daftar stok bahan ajar dengan fitur manajemen data dan analisis kebutuhan *reorder*.
 
 | Kolom Data | Implementasi |
 | :--- | :--- |
-| Kode/Nama MK | Ditampilkan menggunakan data `kode` dan `judul`[cite: 19, 20]. |
-| Stok/Safety Stok | Data `qty` dan `safety`[cite: 26, 28]. Qty dapat diedit langsung menggunakan `v-model`[cite: 33]. |
-| **Status** | Diberi status **Aman** (Hijau/Checkmark), **Menipis** (Oranye/Warning), atau **Kosong** (Merah/Bahaya) berdasarkan perbandingan `qty` dan `safety` menggunakan `v-if/v-else-if`[cite: 43, 44, 45, 46]. |
-| Catatan | Ditampilkan menggunakan `v-html` untuk *rendering* HTML (data `catatanHTML`)[cite: 31, 32]. |
+| Kode/Nama MK | Ditampilkan menggunakan data `kode` dan `judul`. |
+| Stok/Safety Stok | Data `qty` dan `safety` Qty dapat diedit langsung menggunakan `v-model`. |
+| **Status** | Diberi status **Aman** (Hijau/Checkmark), **Menipis** (Oranye/Warning), atau **Kosong** (Merah/Bahaya) berdasarkan perbandingan `qty` dan `safety` menggunakan `v-if/v-else-if`. |
+| Catatan | Ditampilkan menggunakan `v-html` untuk *rendering* HTML (data `catatanHTML`). |
 
 **Fitur Interaktif:**
-* **Filter Kritis:** Filter checkbox yang hanya menampilkan item di mana `qty < safety` atau `qty = 0`[cite: 38].
-* **Filter Dependent Options:** Filter Kategori Mata Kuliah hanya muncul setelah Filter UT-Daerah (UPBJJ) dipilih[cite: 41, 42].
-* **Sort:** Fitur sort berdasarkan Judul, Stok, dan Harga menggunakan `computed property`[cite: 39].
-* **Efisiensi Filter:** Logic *filtering* dan *sorting* diimplementasikan dalam **Computed Properties berantai** untuk memastikan bahwa filter tidak perlu *recompute* seluruh data jika hanya kunci *sorting* yang berubah[cite: 40].
-* **Tambah Data Baru:** Formulir kecil untuk menambah data baru dengan validasi sederhana dan langsung memperbarui DOM (tabel)[cite: 47, 91].
+* **Filter Kritis:** Filter checkbox yang hanya menampilkan item di mana `qty < safety` atau `qty = 0`.
+* **Filter Dependent Options:** Filter Kategori Mata Kuliah hanya muncul setelah Filter UT-Daerah (UPBJJ) dipilih.
+* **Sort:** Fitur sort berdasarkan Judul, Stok, dan Harga menggunakan `computed property`.
+* **Efisiensi Filter:** Logic *filtering* dan *sorting* diimplementasikan dalam **Computed Properties berantai** untuk memastikan bahwa filter tidak perlu *recompute* seluruh data jika hanya kunci *sorting* yang berubah.
+* **Tambah Data Baru:** Formulir kecil untuk menambah data baru dengan validasi sederhana dan langsung memperbarui DOM (tabel).
 
-### 2. Halaman Tracking Delivery Order (DO) (`tracking.html`) [cite: 48, 50]
+### 2. Halaman Tracking Delivery Order (DO) (`tracking.html`) 
 
 Halaman ini memungkinkan pengguna untuk menambahkan DO baru dan melacak DO yang sudah ada.
 
 | Fitur Formulir | Implementasi |
 | :--- | :--- |
-| **Nomor DO Otomatis** | Dihitung menggunakan **Computed Property**. Format penomoran: `DO[Tahun]-[Sequence Number]` (Contoh: `DO2025-0002`)[cite: 52, 53, 54, 55, 57]. |
-| Pilihan Paket | Menggunakan `<select>` dengan `v-for` untuk menampilkan Kode dan Nama Paket[cite: 62, 63]. |
-| Detail Paket | Setelah paket dipilih, detail isi paket ditampilkan menggunakan `v-if`[cite: 64]. |
-| Total Harga | Total Harga (`harga`) diambil dari data paket dan ditampilkan[cite: 66, 67]. |
+| **Nomor DO Otomatis** | Dihitung menggunakan **Computed Property**. Format penomoran: `DO[Tahun]-[Sequence Number]` (Contoh: `DO2025-0002`). |
+| Pilihan Paket | Menggunakan `<select>` dengan `v-for` untuk menampilkan Kode dan Nama Paket. |
+| Detail Paket | Setelah paket dipilih, detail isi paket ditampilkan menggunakan `v-if`. |
+| Total Harga | Total Harga (`harga`) diambil dari data paket dan ditampilkan. |
 
 **Fitur Tracking:**
-* **Pencarian DO:** Menerima input Nomor DO, mencari data di *array* `trackingData`, dan menampilkan riwayat perjalanan (timeline)[cite: 49].
+* **Pencarian DO:** Menerima input Nomor DO, mencari data di *array* `trackingData`, dan menampilkan riwayat perjalanan (timeline).
 * Riwayat perjalanan diurutkan dari yang terbaru ke yang terlama.
 
 ---
